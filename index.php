@@ -3,6 +3,9 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+
+
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/vis/4.2.0/vis.min.css" rel="stylesheet" type="text/css" />
 
@@ -104,7 +107,7 @@
   	fclose($archivaledgehandle);
   	$archivaledges = array();
   	foreach(array_slice($archivaledgelist,1)  as $archivaledge) {
-		$archivaledges[] = array('from' => $archivaledge[0], 'to' => $archivaledge[1]);  
+		$archivaledges[] = array('from' => $archivaledge[0], 'to' => $archivaledge[1], width => '1');  
   	}
 
  	$pubedgehandle = fopen("https://docs.google.com/spreadsheets/d/1l1hC8J1PbR9Fzv0rI9OXc9OcXrEYC19f-eL2JJqBvnw/export?gid=1878598901&format=csv", "r");
@@ -115,7 +118,7 @@
   	fclose($pubedgehandle);
   	$pubedges = array();
   	foreach(array_slice($pubedgelist,1)  as $pubedge) {
-		$pubedges[] = array('from' => $pubedge[0], 'to' => $pubedge[1]);  
+		$pubedges[] = array('from' => $pubedge[1], 'to' => $pubedge[2], width => '1');  
   	}
 
  	$deptedgehandle = fopen("https://docs.google.com/spreadsheets/d/1l1hC8J1PbR9Fzv0rI9OXc9OcXrEYC19f-eL2JJqBvnw/export?gid=1494772489&format=csv", "r");
@@ -126,7 +129,7 @@
   	fclose($deptedgehandle);
   	$deptedges = array();
   	foreach(array_slice($deptedgelist,1)  as $deptedge) {
-		$deptedges[] = array('from' => $deptedge[0], 'to' => $deptedge[1]);  
+		$deptedges[] = array('from' => $deptedge[0], 'to' => $deptedge[1], width => '1');  
   	}
 	
 	$alledges = array_merge($archivaledges, $pubedges, $deptedges);
